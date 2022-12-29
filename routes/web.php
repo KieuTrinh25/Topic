@@ -12,6 +12,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix' => 'admin'], function(){
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
+    
+    Route::get('/categories/create', [CategoryController::class, 'create'])->name('admin.categories.create');
+    Route::post('/categories', [CategoryController::class, 'store'])->name('admin.categories.store');
+
+});
 
 Route::get('/', function () {
     return view('welcome');
