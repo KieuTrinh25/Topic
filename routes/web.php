@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,12 +15,6 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'admin'], function(){
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-
-    Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
-    
-    Route::get('/categories/create', [CategoryController::class, 'create'])->name('admin.categories.create');
-    Route::post('/categories', [CategoryController::class, 'store'])->name('admin.categories.store');
-
 });
 
 Route::get('/', function () {
