@@ -29,7 +29,7 @@
         <div class="col-md-12 col-sm-12  ">
           <div class="x_panel">
             <div class="x_title">
-              <h2>Table Activities</h2>
+              <h2>Table School Years</h2>
               <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -55,12 +55,9 @@
                         <input type="checkbox" id="check-all" class="flat">
                       </th>
                       <th class="column-title">id </th>
-                      <th class="column-title">code</th>
-                      <th class="column-title">name</th>
-                      <th class="column-title">faculty_id</th>
-                      <th class="column-title">content</th>
-                      <th class="column-title">status</th>
-                      <th class="column-title">school_year_id</th>  
+                      <th class="column-title">code</th>                           
+                      <th class="column-title">start_time</th>
+                      <th class="column-title">end_time	</th>                            
                       <th class="column-title no-link last"><span class="nobr"></span>
                         <th class="column-title no-link last"><span class="nobr"></span>
                       </th>

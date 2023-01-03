@@ -32,13 +32,13 @@
 <body class="nav-md">
     <div class="container body">
       
-        @include('production.inc.sidebar')
+          @include('admin.inc.sidebar')
 
-        @include('production.inc.header')
+        @include('admin.inc.header')
 
         @yield('content')
 
-        @include('production.inc.footer')
+        @include('admin.inc.footer')
 
         
 
