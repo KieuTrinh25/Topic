@@ -29,7 +29,7 @@
         <div class="col-md-12 col-sm-12  ">
           <div class="x_panel">
             <div class="x_title">
-              <h2>Table Activities</h2>
+              <h2>Table students</h2>
               <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -58,9 +58,7 @@
                       <th class="column-title">code</th>
                       <th class="column-title">name</th>
                       <th class="column-title">faculty_id</th>
-                      <th class="column-title">content</th>
-                      <th class="column-title">status</th>
-                      <th class="column-title">school_year_id</th>  
+                      <th class="column-title">class_id	 </th>                          
                       <th class="column-title no-link last"><span class="nobr"></span>
                         <th class="column-title no-link last"><span class="nobr"></span>
                       </th>
@@ -78,7 +76,8 @@
                       <td class=" ">1</td>
                       <td class=" ">54732784</td>
                       <td class=" ">Trần Công Hưng</i></td>
-                      <td class=" ">21</td>                            
+                      <td class=" ">21</td>
+                      <td class=" ">22</td>
                       <td class=" last"><a href="#">fix</a>
                       <td class=" last"><a href="#">delete</a>
                       </td>
@@ -86,11 +85,12 @@
                   </tbody>
                 </table>
               </div>
-        
-      
+                      
+                  
             </div>
           </div>
         </div>
+       
       </div>
     </div>
   </div>
