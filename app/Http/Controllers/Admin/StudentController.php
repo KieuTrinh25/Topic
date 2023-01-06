@@ -19,7 +19,7 @@ class StudentController extends Controller
 
     public function edit()
     {
-
+        return view('admin.student.edit');
       
     }
 

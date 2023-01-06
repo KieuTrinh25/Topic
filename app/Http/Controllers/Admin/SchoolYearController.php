@@ -19,7 +19,7 @@ class SchoolYearController extends Controller
 
     public function edit()
     {
-
+        return view('admin.schoolyears.edit');
       
     }
 

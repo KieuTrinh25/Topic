@@ -19,7 +19,7 @@ class KlassController extends Controller
 
     public function edit()
     {
-
+        return view('admin.klass.edit');
       
     }
 

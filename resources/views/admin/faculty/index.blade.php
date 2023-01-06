@@ -29,7 +29,7 @@
         <div class="col-md-12 col-sm-12  ">
           <div class="x_panel">
             <div class="x_title">
-              <h2>Table Class</h2>
+              <h2>Table Faculty</h2>
               <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -57,7 +57,6 @@
                       <th class="column-title">id </th>
                       <th class="column-title">code</th>
                       <th class="column-title">name</th>
-                      <th class="column-title">faculty_id</th>
                       <th class="column-title no-link last"><span class="nobr"></span>
                         <th class="column-title no-link last"><span class="nobr"></span>
                       </th>
@@ -66,7 +65,6 @@
                       </th>
                     </tr>
                   </thead>
-
                   <tbody>
                     <tr class="even pointer">
                       <td class="a-center ">
@@ -75,11 +73,9 @@
                       <td class=" ">1</td>
                       <td class=" ">54732784</td>
                       <td class=" ">Trần Công Hưng</i></td>
-                      <td class=" ">21</td>                            
-                      <td class=" last"><a href="http://127.0.0.1:8000/admin/klass/edit">Edit</a>
+                      <td class=" last"><a href="http://127.0.0.1:8000/admin/faculty/edit">Edit</a>
                       <td class=" last"><a href="#">Delete</a>
                       </td>
-                   
                   </tbody>
                 </table>
               </div>
@@ -91,7 +87,7 @@
         <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Form Class</h2>
+                <h2>Form Faculty</h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -121,18 +117,6 @@
                         </div>
                     </div>
                     
-                    <div class="form-group row">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">faculty_id</label>
-                        <div class="col-md-6 col-sm-6 ">
-                            <select class="form-control">
-                                <option>Choose option</option>
-                                <option>Option one</option>
-                                <option>Option two</option>
-                                <option>Option three</option>
-                                <option>Option four</option>
-                            </select>
-                        </div>
-                    </div>
                     <div class="ln_solid"></div>
                     <div class="item form-group">
                         <div class="col-md-6 col-sm-6 offset-md-3">

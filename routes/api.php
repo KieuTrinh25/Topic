@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\KlassController;
+use App\Http\Controllers\Api\FacultyController;
+use App\Http\Controllers\Api\SchoolYearController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +20,22 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+// Năm học
+Route::get('/schoolYears', [SchoolYearController::class, 'index']);
+Route::get('/schoolYears/{id}', [SchoolYearController::class, 'show']);
+Route::post('/schoolYears', [SchoolYearController::class, 'store']);
+Route::put('/schoolYears/{id}', [SchoolYearController::class, 'update']);
+Route::delete('/schoolYears/{id}', [SchoolYearController::class, 'destroy']);
+
+// Khoa
+Route::get('/faculties', [FacultyController::class, 'index']);
+Route::get('/faculties/{id}', [FacultyController::class, 'show']);
+Route::post('/faculties', [FacultyController::class, 'store']);
+Route::put('/faculties/{id}', [FacultyController::class, 'update']);
+Route::delete('/faculties/{id}', [FacultyController::class, 'destroy']);
+// Lớp
+Route::get('/klasses', [KlassController::class, 'index']);
+Route::get('/klasses/{id}', [KlassController::class, 'show']);
+Route::post('/klasses', [KlassController::class, 'store']);
+Route::put('/klasses/{id}', [KlassController::class, 'update']);
+Route::delete('/klasses/{id}', [KlassController::class, 'destroy']);
