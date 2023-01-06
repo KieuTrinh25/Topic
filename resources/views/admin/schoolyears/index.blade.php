@@ -25,7 +25,7 @@
 
       <div class="clearfix"></div>
 
-      <div class="row" style="display: block;">                                                       
+      <div class="row" style="display: block;">
         <div class="col-md-12 col-sm-12  ">
           <div class="x_panel">
             <div class="x_title">
@@ -46,20 +46,17 @@
               <div class="clearfix"></div>
             </div>
 
-            <div class="x_content">                 
+            <div class="x_content">
               <div class="table-responsive">
                 <table class="table table-striped jambo_table bulk_action">
                   <thead>
                     <tr class="headings">
-                      <th>
-                        <input type="checkbox" id="check-all" class="flat">
-                      </th>
                       <th class="column-title">id </th>
-                      <th class="column-title">code</th>                           
+                      <th class="column-title">code</th>
                       <th class="column-title">start_time</th>
-                      <th class="column-title">end_time	</th>                            
-                      <th class="column-title no-link last"><span class="nobr"></span>
-                        <th class="column-title no-link last"><span class="nobr"></span>
+                      <th class="column-title">end_time	</th>
+                      <th class="column-title no-link last"><span class="nobr">Edit</span>
+                        <th class="column-title no-link last"><span class="nobr">Delete</span>
                       </th>
                       <th class="bulk-actions" colspan="7">
                         <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
@@ -67,29 +64,126 @@
                     </tr>
                   </thead>
 
-                  <tbody>
-                    <tr class="even pointer">
-                      <td class="a-center ">
-                        <input type="checkbox" class="flat" name="table_records">
-                      </td>
+                  <tbody id="schoolYear">
+                    <tr class="even pointer">                      
                       <td class=" ">1</td>
                       <td class=" ">54732784</td>
                       <td class=" ">Trần Công Hưng</i></td>
-                      <td class=" ">21</td>                            
-                      <td class=" last"><a href="#">fix</a>
-                      <td class=" last"><a href="#">delete</a>
-                      </td>
-                   
+                      <td class=" ">21</td>
+                      <td class=" last"><a href="http://127.0.0.1:8000/admin/schoolyears/edit">Edit</a></td>
+                      <td class=" last"><a href="#">Delete</a></td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
-        
-      
             </div>
           </div>
         </div>
+        <div class="col-md-12 col-sm-12 ">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Form School Years </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a class="dropdown-item" href="#">Settings 1</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <input type="text" id="name" required="required" class="form-control ">
+                        </div>
+                    </div>
+                    
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Start Time <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 ">
+                        <input id="start_time" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                        <script>
+                            function timeFunctionLong(input) {
+                                setTimeout(function() {
+                                    input.type = 'text';
+                                }, 60000);
+                            }
+                        </script>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">End Time<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <input id="end_time" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                            <script>
+                                function timeFunctionLong(input) {
+                                    setTimeout(function() {
+                                        input.type = 'text';
+                                    }, 60000);
+                                }
+                            </script>
+                            </div>
+                        </div>
+                            
+                    <div class="ln_solid"></div>
+                    <div class="item form-group">
+                        <div class="col-md-6 col-sm-6 offset-md-3">
+                            <button class="btn btn-primary" type="button">Cancel</button>
+                            <button class="btn btn-primary" type="reset">Reset</button>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
       </div>
     </div>
   </div>
+  <script>
+    $.ajax({
+    method: "GET",
+    url: "http://127.0.0.1:8000/api/schoolYears"
+  }).done(function(schoolYearList){
+    schoolYearList.forEach(schoolYear => {
+      let trNode = $('<tr></tr>')
+      $('#schoolYear').append(trNode)
+
+      let tdStt = $('<td></td>')
+      trNode.append(tdStt)
+      tdStt.text(schoolYear.id)
+
+      let tdCode = $('<td></td>')
+      trNode.append(tdCode)
+      tdCode.text(schoolYear.code)
+
+      let tdStartTime = $('<td></td>')
+      trNode.append(tdStartTime)
+      tdStartTime.text(schoolYear.start_time)
+
+      let tdEndTime = $('<td></td>')
+      trNode.append(tdEndTime)
+      tdEndTime.text(schoolYear.end_time)
+    })
+  });
+
+  </script>
   <!-- /page content -->
   @endsection

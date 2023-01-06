@@ -20,7 +20,7 @@ class SemesterController extends Controller
     public function edit()
     {
 
-      
+        return view('admin.semesters.edit');
     }
 
     public function update()

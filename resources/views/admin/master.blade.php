@@ -28,6 +28,7 @@
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('admin/css/custom.min.css')}}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
 <body class="nav-md">
     <div class="container body">
@@ -39,9 +40,6 @@
         @yield('content')
 
         @include('admin.inc.footer')
-
-        
-
         <!-- jQuery -->
     <script src="{{ asset('admin/vendors/jquery/dist/jquery.min.js')}}"></script>
     <!-- Bootstrap -->

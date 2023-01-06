@@ -19,7 +19,7 @@ class ActivityController extends Controller
 
     public function edit()
     {
-
+        return view('admin.activities.edit');
       
     }
 
