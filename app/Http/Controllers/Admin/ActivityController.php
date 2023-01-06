@@ -3,33 +3,67 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\SchoolYear;
+use App\Services\Activity\Actions\CreateActivityAction;
+use App\Services\Activity\Actions\DeleteActivityAction;
+use App\Services\Activity\Actions\ShowActivityAction;
+use App\Services\Activity\Actions\UpdateActivityAction;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
     public function index()
-    {       
-        return view('admin.activities.index');
+    {
+        $activityList = resolve(ShowActivityAction::class)->run();
+        $schoolYearList = SchoolYear::All();
+        return view('admin.activities.index', array(
+            'activityList' => $activityList,
+            'schoolYearList' => $schoolYearList,
+        ));
     }
     public function create()
     {
-        return view('admin.activities.create');
+        $schoolYearList = SchoolYear::All();
+        return view('admin.activities.index', array('schoolYearList' => $schoolYearList));
+    }
+
+    public function store(Request $request)
+    {
+        $product = resolve(CreateActivityAction::class)->create(
+            $request->all()
+        );
+        $request->session()->flash('status', 'them thanh cong');
+        return redirect()->route('admin.activities.index');
+    }
+    public function edit($id)
+    {
+        $activity = resolve(ShowActivityAction::class)->find($id);
+        $schoolYearList = SchoolYear::All();
+        return view('admin.activities.edit', array('Activity' => $activity, 'schoolYearList' => $schoolYearList), compact('activity'));
+    }
+
+    public function update($id, Request $request)
+    {
+        $activity = resolve(UpdateActivityAction::class)->update($id, $request->all());
+        if ($activity) {
+            $request->session()->flash('status', 'Update Success');
+        } else {
+            $request->session()->flash('status', 'Update Fail');
+        }
+        return redirect()->route('admin.activities.index');
     }
 
 
-    public function edit()
+    public function destroy($id, Request $request)
     {
-        return view('admin.activities.edit');
-      
-    }
 
-    public function update()
-    {
-       
-    }
 
-    public function destroy()
-    {
-        
+        $activity = resolve(DeleteActivityAction::class)->delete($id);
+        if ($activity) {
+            $request->session()->flash('status', 'Delete Success');
+        } else {
+            $request->session()->flash('status', 'Delete Fail');
+        }
+        return redirect()->route('admin.activities.index');
     }
 }

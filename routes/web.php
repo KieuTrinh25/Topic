@@ -32,10 +32,17 @@ Route::group(['prefix' => 'admin'], function(){
      /**
      * admin Activities
      */
-    Route::get('/activitie', [ActivityController::class,'index'])->name('admin.activities.index');
-    Route::get('/activitie/create', [ActivityController::class, 'create'])->name('admin.activities.create');
-    Route::get('/activitie/edit', [ActivityController::class, 'edit'])->name('admin.activitie.edit');
-    /**
+
+    Route::get('/activities', [ActivityController::class,'index'])->name('admin.activities.index');
+    Route::get('/activities/create', [ActivityController::class, 'create'])->name('admin.activities.create');
+    Route::post('/activities', [ActivityController::class, 'store'])->name('admin.activities.store');
+    
+    Route::get('/activities/{id}/edit', [ActivityController::class, 'edit'])->name('admin.activities.edit');
+    Route::put('/activities/{id}', [ActivityController::class, 'update'])->name('admin.activities.update');
+    Route::delete('/activities/{id}', [ActivityController::class, 'destroy'])->name('admin.activities.destroy');
+
+
+     /**
      * admin klass
      */
     Route::get('/klass', [KlassController::class,'index'])->name('admin.klass.index');
