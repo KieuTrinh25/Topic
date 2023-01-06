@@ -45,39 +45,44 @@
             </div>
             <div class="x_content">
                 <br />
-                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
+                <form id="demo-form2" method="POST" action="{{ route('admin.activities.store') }}" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
+                    @csrf
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="code" >code <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <input type="text" id="code" required="required" class="form-control " name="code" value="{{ old('code') }}">
+                        </div>
+                    </div>
                     <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="name" required="required" class="form-control ">
+                            <input type="text" id="name" required="required" class="form-control "  name="name" value="{{ old('name') }}">
                         </div>
                     </div>
                     
                     <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="content">content <span class="required">*</span>
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="content"  >content <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="content" required="required" class="form-control ">
+                            <input type="text" id="content" required="required" class="form-control " name="content" value="{{ old('content') }}">
                         </div>
                     </div>
                     <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="status">status<span class="required">*</span>
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="status" >status<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="status" required="required" class="form-control ">
+                            <input type="text" id="status" required="required" class="form-control " name="status" value="{{ old('status') }}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-md-3 col-sm-3 label-align">school_year_id</label>
                         <div class="col-md-6 col-sm-6 ">
-                            <select class="form-control">
-                                <option>Choose option</option>
-                                <option>Option one</option>
-                                <option>Option two</option>
-                                <option>Option three</option>
-                                <option>Option four</option>
+                            <select class="form-control" name="school_year_id">
+                                @foreach($schoolYearList as $school)
+                                <option value="{{ $school->id }}">{{ $school->code }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
