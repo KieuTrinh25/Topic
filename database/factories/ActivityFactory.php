@@ -21,7 +21,7 @@ class ActivityFactory extends Factory
             'name'=>fake()->name(),
             'content'=>fake()->sentence(),
             'status'=>fake()->sentence(),
-            'school_year_id' => fake()->numberBetween(1,5),
+            'school_year_id' => fake()->numberBetween(1,3),
         ];
     }
 }

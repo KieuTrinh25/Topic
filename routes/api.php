@@ -3,7 +3,7 @@
 use App\Http\Controllers\Api\KlassController;
 use App\Http\Controllers\Api\FacultyController;
 use App\Http\Controllers\Api\SchoolYearController;
-use App\Http\Controllers\Api\ActivityController;
+use App\Http\Controllers\Api\ActivityController; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -48,3 +48,4 @@ Route::Post('/activity', [ActivityController::class, 'store']);
 Route::Put('/activity/{id}', [ActivityController::class, 'show']);
 Route::Delete('/activity/{id}', [ActivityController::class, 'destroy']);
 
+ 

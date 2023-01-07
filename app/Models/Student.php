@@ -14,7 +14,7 @@ class Student extends Model
         return $this->belongsToMany(Activity::class);
     }
 
-    public function klasses(){
+    public function klass(){
         return $this->belongsTo(Klass::class);
     }
 
