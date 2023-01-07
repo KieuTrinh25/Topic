@@ -35,11 +35,12 @@
                   <li><a><i class="fa fa-edit"></i> Table <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="http://127.0.0.1:8000/admin/schoolyears">Table School Year</a></li>
-                      <li><a href="http://127.0.0.1:8000/admin/semester">Table Semester</a></li>
-                      <li><a href="http://127.0.0.1:8000/admin/faculty">Table Faculty</a></li>
-                      <li><a href="http://127.0.0.1:8000/admin/klass">Table Class </a></li>
-                      <li><a href="http://127.0.0.1:8000/admin/student">Table Student</a></li>
-                      <li><a href="http://127.0.0.1:8000/admin/activitie">Table Activities</a></li>
+                      <li><a href="http://127.0.0.1:8000/admin/semesters">Table Semester</a></li>
+                      <li><a href="http://127.0.0.1:8000/admin/faculties">Table Faculty</a></li>
+                      <li><a href="http://127.0.0.1:8000/admin/klasses">Table Class </a></li>
+                      <li><a href="http://127.0.0.1:8000/admin/students">Table Student</a></li>
+                      <!-- <li><a href="{{route ('admin.students.index') }}}}">Table Student</a></li> -->
+                      <li><a href="http://127.0.0.1:8000/admin/activities">Table Activities</a></li>
                     </ul>
                   </li>
                

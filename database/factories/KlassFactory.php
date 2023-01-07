@@ -19,7 +19,7 @@ class KlassFactory extends Factory
         return [
             'code'=>fake()->isbn10(),
             'name'=>fake()->name(),
-            'faculty_id' => fake()->numberBetween(1,5),
+            'faculty_id' => fake()->numberBetween(1,3),
         ];
     }
 }
