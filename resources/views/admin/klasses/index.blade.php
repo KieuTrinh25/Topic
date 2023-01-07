@@ -68,18 +68,26 @@
                   </thead>
 
                   <tbody>
+                    @foreach ($KlassList as $klass)
                     <tr class="even pointer">
-                      <td class="a-center ">
-                        <input type="checkbox" class="flat" name="table_records">
-                      </td>
-                      <td class=" ">1</td>
-                      <td class=" ">54732784</td>
-                      <td class=" ">Trần Công Hưng</i></td>
-                      <td class=" ">21</td>                            
-                      <td class=" last"><a href="http://127.0.0.1:8000/admin/klass/edit">Edit</a>
-                      <td class=" last"><a href="#">Delete</a>
-                      </td>
-                   
+                    <td class=" ">{{ $klass->id }}</td>
+                    <td class=" ">{{ $klass->code }}</td>
+                    <td class=" ">{{ $klass->name }}</i></td>                  
+                    <td class="status">{{ $klass->faculty->code }}</td>
+                    <td class=" last"> <a
+                            href="{{ route('admin.activities.edit', $klass->id) }}"><i
+                                class="mdi mdi-border-color"></i>edit</a>
+                    <td class=" last">
+                        <form method="post"
+                            action="{{ route('admin.activities.destroy', $klass->id) }}">
+                            @method('delete')
+                            @csrf
+                            <button type="submit" class="btn"><i
+                                    class="mdi mdi-delete"></i>delete</button>
+                        </form>
+                    </td>
+                  </tr>
+            @endforeach
                   </tbody>
                 </table>
               </div>
@@ -111,25 +119,29 @@
             </div>
             <div class="x_content">
                 <br />
-                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
+                <form id="demo-form2" method="POST" action="{{ route('admin.klasses.store') }}" data-parsley-validate class="form-horizontal form-label-left">
+                  @csrf
+                  <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="code" >Code <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 ">
+                        <input type="text" id="code" required="required" class="form-control " name="code" value="{{ old('code') }}">
+                    </div>
+                </div>
                     <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name <span class="required">*</span>
+                        <label class="col-form-label col-md-3 col-sm-3 label-align"  for="name">Name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="name" required="required" class="form-control ">
+                            <input type="text" id="name" required="required" class="form-control " name="name" value="{{ old('name') }}">
                         </div>
                     </div>
-                    
                     <div class="form-group row">
                         <label class="col-form-label col-md-3 col-sm-3 label-align">faculty_id</label>
                         <div class="col-md-6 col-sm-6 ">
-                            <select class="form-control">
-                                <option>Choose option</option>
-                                <option>Option one</option>
-                                <option>Option two</option>
-                                <option>Option three</option>
-                                <option>Option four</option>
+                            <select class="form-control" name="faculty_id">
+                              @foreach($facultyList as $klass)
+                              <option value="{{ $klass->id }}">{{ $klass->name }}</option>
+                              @endforeach
                             </select>
                         </div>
                     </div>

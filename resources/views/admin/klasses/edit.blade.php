@@ -45,44 +45,27 @@
             </div>
             <div class="x_content">
                 <br />
-                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" action="{{ route ('admin.students.update', $student->id) }}">
+                    @method('put')
+                    @csrf
                     <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name <span class="required">*</span>
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="name" Name value="{{ $student->name }}">
                         </label>
                         <div class="col-md-6 col-sm-6 ">
                             <input type="text" id="name" required="required" class="form-control ">
                         </div>
                     </div>
                     
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Start Time <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input id="start_time" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
-                        <script>
-                            function timeFunctionLong(input) {
-                                setTimeout(function() {
-                                    input.type = 'text';
-                                }, 60000);
-                            }
-                        </script>
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align">Faculty</label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <select class="form-control" name="faculty_id">
+                                @foreach($facultyList as $fac)
+                                <option @if($fac->id == $student->faculty_id) selected @endif value="{{ $fac->id }}">{{ $fac->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
-                    <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">End Time<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 ">
-                            <input id="end_time" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
-                            <script>
-                                function timeFunctionLong(input) {
-                                    setTimeout(function() {
-                                        input.type = 'text';
-                                    }, 60000);
-                                }
-                            </script>
-                            </div>
-                        </div>
                             
                     <div class="ln_solid"></div>
                     <div class="item form-group">
