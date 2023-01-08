@@ -18,6 +18,7 @@ class SchoolYearFactory extends Factory
     {
         return [
             'code'=>fake()->isbn10(),
+            'name'=>fake()->name(),
             'start_time'=>fake()->date(),
             'end_time'=>fake()->date(),
         ];

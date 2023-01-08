@@ -19,6 +19,11 @@ class StudentFactory extends Factory
         return [
             'code'=>fake()->isbn10(),
             'name'=>fake()->name(), 
+            'day_of_birth'=>fake()->date(), 
+            'sex'=>fake()->title(), 
+            'phone'=>fake()->phoneNumber(), 
+            'email'=>fake()->email(), 
+            'address'=>fake()->address(), 
             'faculty_id' => fake()->numberBetween(1,3),
             'klass_id' => fake()->numberBetween(1,3),
         ];
