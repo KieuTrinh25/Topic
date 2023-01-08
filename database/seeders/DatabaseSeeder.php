@@ -20,11 +20,11 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        \App\Models\Faculty::factory(5)->create();
-        \App\Models\SchoolYear::factory(5)->create();
-        \App\Models\Semester::factory(5)->create();
-        \App\Models\Klass::factory(5)->create();
-        \App\Models\Student::factory(5)->create();
-        \App\Models\Activity::factory(5)->create();
+        \App\Models\Faculty::factory(3)->create();
+        \App\Models\SchoolYear::factory(3)->create();
+        \App\Models\Semester::factory(3)->create();
+        \App\Models\Klass::factory(3)->create();
+        \App\Models\Student::factory(3)->create();
+        \App\Models\Activity::factory(3)->create();
     }
 }

@@ -25,7 +25,7 @@
       <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Form Edit Studens </h2>
+                <h2>Form Edit Student </h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -45,42 +45,37 @@
             </div>
             <div class="x_content">
                 <br />
-                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" action="{{ route ('admin.students.update', $student->id) }}">
+                    @method('put')
+                    @csrf
+                    
                     <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="name" required="required" class="form-control ">
+                            <input type="text" id="name" required="required" class="form-control "  name="name" value="{{ $student->name }}">
                         </div>
-                    </div>
+                    </div> 
                     <div class="form-group row">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">faculty_id</label>
+                        <label class="col-form-label col-md-3 col-sm-3 label-align">Faculty</label>
                         <div class="col-md-6 col-sm-6 ">
-                            <select class="form-control">
-                                <option>Choose option</option>
-                                <option>Option one</option>
-                                <option>Option two</option>
-                                <option>Option three</option>
-                                <option>Option four</option>
+                            <select class="form-control" name="faculty_id">
+                                @foreach($facultyList as $fac)
+                                <option @if($fac->id == $student->faculty_id) selected @endif value="{{ $fac->id }}">{{ $fac->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="klass_id">klass_id <span class="required">*</span>
-                        </label>
+                        <label class="col-form-label col-md-3 col-sm-3 label-align">Class</label>
                         <div class="col-md-6 col-sm-6 ">
-                            <select class="form-control">
-                                <option>Choose option</option>
-                                <option>Option one</option>
-                                <option>Option two</option>
-                                <option>Option three</option>
-                                <option>Option four</option>
+                            <select class="form-control" name="klass_id">
+                                @foreach($klassList as $klass)
+                                <option @if($klass->id == $student->klass_id) selected @endif value="{{ $klass->id }}">{{ $klass->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
-                    
-                        
                     <div class="ln_solid"></div>
                     <div class="item form-group">
                         <div class="col-md-6 col-sm-6 offset-md-3">

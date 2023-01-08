@@ -9,7 +9,7 @@ class FacultyController extends Controller
 {
     public function index()
     {       
-        return view('admin.faculty.index');
+        return view('admin.faculties.index');
     }
     public function create()
     {

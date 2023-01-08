@@ -3,33 +3,93 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Faculty;
+use App\Models\Klass;
+use App\Services\Student\Actions\CreateStudentAction;
+use App\Services\Student\Actions\DeleteStudentAction;
+use App\Services\Student\Actions\ShowStudentAction;
+use App\Services\Student\Actions\UpdateStudentAction;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
     public function index()
-    {       
-        return view('admin.student.index');
+    {
+        $studentList = resolve(ShowStudentAction::class)->run();
+        $facultyList = Faculty::all();
+        $klassList = Klass::all();
+        return view('admin.students.index', array(
+            'studentList' => $studentList,
+            'facultyList' => $facultyList,
+            'klassList' => $klassList,
+        ));
     }
     public function create()
     {
-        return view('admin.student.create');
+        $facultyList = Faculty::all();
+        $klassList = Klass::all();
+        return view('admin.students.create', array(
+            'facultyList' => $facultyList,
+            'klassList' => $klassList,
+        ));
     }
-
-
-    public function edit()
+    public function store(Request $request)
     {
-        return view('admin.student.edit');
-      
+
+        $student = resolve(CreateStudentAction::class)->create($request->all());
+        if ($student) {
+            $request->session()->flash('status', 'Create Student Success');
+        } else {
+            $request->session()->flash('status', 'Create Student Fail');
+        }
+        return redirect()->route('admin.students.index');
     }
 
-    public function update()
+    public function edit($id)
     {
-       
+        $student = resolve(ShowStudentAction::class)->find($id);
+        $facultyList = Faculty::all();
+        $klassList = Klass::all();
+        return view('admin.students.edit', array(
+            'student' => $student,
+            'facultyList' => $facultyList,
+            'klassList' => $klassList,
+        ));
     }
 
-    public function destroy()
+    public function update($id, Request $request)
     {
-        
+        $student = resolve(UpdateStudentAction::class)->update($id, $request->all());
+        if ($student) {
+            $request->session()->flash('status', 'Update Student Success');
+        } else {
+            $request->session()->flash('status', 'Update Student Fail');
+        }
+        return redirect()->route('admin.students.index');
     }
+
+    public function destroy($id, Request $request)
+    {
+        $bool = resolve(DeleteStudentAction::class)->delete($id);
+        if ($bool) {
+            $request->session()->flash('status', 'Delete Student Success');
+        } else {
+            $request->session()->flash('status', 'Delete Student Fail');
+        }
+
+        return redirect()->route('admin.students.index');
+    }
+
+    // public function search(Request $request)
+    // {
+    //     $studentName = $request->input("search");
+    //     $studentList = resolve(ShowStudentAction::class)->getStudenByClass($studentName)->paginate(12);
+    //     $facultyList = Faculty::all();
+    //     $klassList = Klass::all();
+    //     return view("student-search", array(
+    //         'studentList' => $studentList,
+    //         'facultyList' => $facultyList,
+    //         'klassList' => $klassList,
+    //     ));
+    // }
 }

@@ -54,3 +54,4 @@ Route::Get('/semester/{id}', [SemesterController::class, 'show']);
 Route::Post('/semester', [SemesterController::class, 'store']);
 Route::Put('/semester/{id}', [SemesterController::class, 'show']);
 Route::Delete('/semester/{id}', [SemesterController::class, 'destroy']);
+ 
