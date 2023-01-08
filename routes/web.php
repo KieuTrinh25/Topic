@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KlassController;
+use App\Http\Controllers\Admin\SchoolYearController;
+use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Models\Klass;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +54,27 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/klass/{id}/edit', [KlassController::class, 'edit'])->name('admin.klasses.edit');
     Route::put('/klass/{id}', [KlassController::class, 'update'])->name('admin.klasses.update');
     Route::delete('/klass/{id}', [KlassController::class, 'destroy'])->name('admin.klasses.destroy');
+
+    /**
+     * admin schoolyears
+     */
+    Route::get('/semesters', [SemesterController::class, 'index'])->name('admin.semesters.index');
+    Route::get('/semesters/create', [SemesterController::class,'create'])->name('admin.semesters.create');
+    Route::post('/semesters', [SemesterController::class,'store'])->name('admin.semesters.store');
+    Route::get('/semesters/{id}/edit', [SemesterController::class, 'edit'])->name('admin.semesters.edit');
+    Route::put('/semesters/{id}', [SemesterController::class, 'update'])->name('admin.semesters.update');
+    Route::delete('/semesters/{id}', [SemesterController::class, 'destroy'])->name('admin.semesters.destroy');
+
+    /**
+     * admin schoolyears
+     */
+    Route::get('/schoolyears', [SchoolYearController::class, 'index'])->name('admin.schoolyears.index');
+    Route::get('/schoolyears/create', [SchoolYearController::class,'create'])->name('admin.schoolyears.create');
+    Route::post('/schoolyears', [SchoolYearController::class,'store'])->name('admin.schoolyears.store');
+    Route::get('/schoolyears/{id}/edit', [SchoolYearController::class, 'edit'])->name('admin.schoolyears.edit');
+    Route::put('/schoolyears/{id}', [SchoolYearController::class, 'update'])->name('admin.schoolyears.update');
+    Route::delete('/schoolyears/{id}', [SchoolYearController::class, 'destroy'])->name('admin.schoolyears.destroy');
+
 });
 
 Route::get('/', function () {
