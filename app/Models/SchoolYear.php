@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SchoolYear extends Model
 {
     use HasFactory;
-    protected $fillable = ['code','start_time','end_time'];
+    protected $fillable = ['code','name', 'slug', 'start_time','end_time'];
 
     public function semesters(){
         return $this->hasMany(Semester::class);
