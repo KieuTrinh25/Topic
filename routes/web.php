@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\KlassController;
 use App\Http\Controllers\Admin\StudentController;
+use App\Models\Klass;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +43,15 @@ Route::group(['prefix' => 'admin'], function () {
     Route::put('/students/{id}', [StudentController::class, 'update'])->name('admin.students.update');
     Route::delete('/students/{id}', [StudentController::class, 'destroy'])->name('admin.students.destroy');
  
+      /**
+     * admin klass
+     */
+    Route::get('/klass', [KlassController::class, 'index'])->name('admin.klasses.index');
+    Route::get('/klass/create', [KlassController::class,'create'])->name('admin.klasses.create');
+    Route::post('/klass', [KlassController::class,'store'])->name('admin.klasses.store');
+    Route::get('/klass/{id}/edit', [KlassController::class, 'edit'])->name('admin.klasses.edit');
+    Route::put('/klass/{id}', [KlassController::class, 'update'])->name('admin.klasses.update');
+    Route::delete('/klass/{id}', [KlassController::class, 'destroy'])->name('admin.klasses.destroy');
 });
 
 Route::get('/', function () {
