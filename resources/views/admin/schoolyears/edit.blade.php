@@ -45,28 +45,58 @@
             </div>
             <div class="x_content">
                 <br />
-                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
-                    <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name <span class="required">*</span>
+                <form id="demo-form2" method="post" action="{{ route('admin.schoolyears.update', $schoolYear->id) }}"
+                    enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
+                    @method('put')
+                    @csrf
+                    {{-- <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Code <span
+                                class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="name" required="required" class="form-control ">
+                            <input type="text" id="name" required="required" class="form-control " name="code"
+                                value="{{ $schoolYear->code }}">
+                        </div>
+                    </div> --}}
+                    
+
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="start_time">Start Time <span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <input id="start_time" name="start_time" class="date-picker form-control" placeholder="dd-mm-yyyy"
+                                type="text" required="required" type="text" onfocus="this.type='date'"
+                                onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'"
+                                onmouseout="timeFunctionLong(this)" value="{{ $schoolYear->start_time }}">
+                            <script>
+                                function timeFunctionLong(input) {
+                                setTimeout(function() {
+                                    input.type = 'text';
+                                }, 60000);
+                            }
+                            </script>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="end_time">End Time<span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <input id="end_time" name="end_time" class="date-picker form-control" placeholder="dd-mm-yyyy"
+                                type="text" required="required" type="text" onfocus="this.type='date'"
+                                onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'"
+                                onmouseout="timeFunctionLong(this)" value="{{ $schoolYear->end_time }}">
+                            <script>
+                                function timeFunctionLong(input) {
+                                    setTimeout(function() {
+                                        input.type = 'text';
+                                    }, 60000);
+                                }
+                            </script>
                         </div>
                     </div>
                     
-                    <div class="form-group row">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">faculty_id</label>
-                        <div class="col-md-6 col-sm-6 ">
-                            <select class="form-control">
-                                <option>Choose option</option>
-                                <option>Option one</option>
-                                <option>Option two</option>
-                                <option>Option three</option>
-                                <option>Option four</option>
-                            </select>
-                        </div>
-                    </div>
                     <div class="ln_solid"></div>
                     <div class="item form-group">
                         <div class="col-md-6 col-sm-6 offset-md-3">

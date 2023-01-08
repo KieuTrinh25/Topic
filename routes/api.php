@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Api\KlassController;
 use App\Http\Controllers\Api\FacultyController;
 use App\Http\Controllers\Api\SchoolYearController;
-use App\Http\Controllers\Api\ActivityController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -48,3 +48,9 @@ Route::Post('/activity', [ActivityController::class, 'store']);
 Route::Put('/activity/{id}', [ActivityController::class, 'show']);
 Route::Delete('/activity/{id}', [ActivityController::class, 'destroy']);
 
+//học kỳ
+Route::Get('/semester', [SemesterController::class, 'index']);
+Route::Get('/semester/{id}', [SemesterController::class, 'show']);
+Route::Post('/semester', [SemesterController::class, 'store']);
+Route::Put('/semester/{id}', [SemesterController::class, 'show']);
+Route::Delete('/semester/{id}', [SemesterController::class, 'destroy']);
