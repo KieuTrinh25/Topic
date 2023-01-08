@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Api\KlassController;
 use App\Http\Controllers\Api\FacultyController;
 use App\Http\Controllers\Api\SchoolYearController;
+use App\Http\Controllers\Api\ActivityController; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

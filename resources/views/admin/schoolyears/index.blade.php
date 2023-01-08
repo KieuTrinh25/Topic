@@ -68,26 +68,26 @@
 
                 <tbody id="schoolYear">
                   @foreach ($schoolYearList as $schoolYear)
-                    <tr class="even pointer">
-                      <td class=" ">{{ $schoolYear->id }}</td>
-                      <td class=" ">{{ $schoolYear->code }}</td>
-                      <td class=" ">{{ $schoolYear->start_time }}</i></td>
-                      <td class="">{{ $schoolYear->end_time }}</td>
-                      <td class=" last"> <a href="{{ route('admin.schoolyears.edit', $schoolYear->id) }}"><i
-                            class="mdi mdi-border-color"></i>edit</a>
-                      <td class=" last">
-                        <form method="post" action="{{ route('admin.schoolyears.destroy', $schoolYear->id) }}">
-                          @method('delete')
-                          @csrf
-                          <button type="submit" class="btn"><i class="mdi mdi-delete"></i>delete</button>
-                        </form>
-                      </td>
-                    </tr>
-                    @endforeach
+                  <tr class="even pointer">
+                    <td class=" ">{{ $schoolYear->id }}</td>
+                    <td class=" ">{{ $schoolYear->code }}</td>
+                    <td class=" ">{{ $schoolYear->start_time }}</i></td>
+                    <td class="">{{ $schoolYear->end_time }}</td>
+                    <td class=" last"> <a href="{{ route('admin.schoolyears.edit', $schoolYear->id) }}"><i
+                          class="mdi mdi-border-color"></i>edit</a>
+                    <td class=" last">
+                      <form method="post" action="{{ route('admin.schoolyears.destroy', $schoolYear->id) }}">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="btn"><i class="mdi mdi-delete"></i>delete</button>
+                      </form>
+                    </td>
+                  </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -115,27 +115,28 @@
           </div>
           <div class="x_content">
             <br />
-            <form id="demo-form2" method="POST" action="{{ route('admin.schoolyears.store') }}" enctype="multipart/form-data"
-             data-parsley-validate class="form-horizontal form-label-left">
-             @csrf
-             <div class="item form-group">
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="code">code <span
-                  class="required">*</span>
-              </label>
-              <div class="col-md-6 col-sm-6 ">
-                <input type="text" id="code" required="required" class="form-control " name="code"
-                  value="{{ old('code') }}">
+            <form id="demo-form2" method="POST" action="{{ route('admin.schoolyears.store') }}"
+              enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
+              @csrf
+              <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="code">code <span
+                    class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 ">
+                  <input type="text" id="code" required="required" class="form-control " name="code"
+                    value="{{ old('code') }}">
+                </div>
               </div>
-            </div>
 
               <div class="item form-group">
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="start_time">Start Time <span
                     class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                  <input name="start_time" id="start_time" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text"
-                    required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'"
-                    onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)" value="{{ old('start_time') }}">
+                  <input name="start_time" id="start_time" class="date-picker form-control" placeholder="dd-mm-yyyy"
+                    type="text" required="required" type="text" onfocus="this.type='date'"
+                    onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'"
+                    onmouseout="timeFunctionLong(this)" value="{{ old('start_time') }}">
                   <script>
                     function timeFunctionLong(input) {
                                     setTimeout(function() {
@@ -150,9 +151,10 @@
                     class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                  <input name="end_time" id="end_time" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text"
-                    required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'"
-                    onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)" value="{{ old('end_time') }}">
+                  <input name="end_time" id="end_time" class="date-picker form-control" placeholder="dd-mm-yyyy"
+                    type="text" required="required" type="text" onfocus="this.type='date'"
+                    onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'"
+                    onmouseout="timeFunctionLong(this)" value="{{ old('end_time') }}">
                   <script>
                     function timeFunctionLong(input) {
                                         setTimeout(function() {
