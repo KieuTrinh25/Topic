@@ -183,6 +183,7 @@ return [
         Illuminate\View\ViewServiceProvider::class, 
         Barryvdh\Debugbar\ServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -196,6 +197,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+
+        //Phân quyền
+        Spatie\Permission\PermissionServiceProvider::class,
+
 
     ],
 

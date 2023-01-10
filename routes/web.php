@@ -8,6 +8,10 @@ use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Models\Klass;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,4 +89,15 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix' => 'admin','middleware' => ['auth']], function() {
+    Route::resource('/roles', RoleController::class);
+    Route::resource('/users', UserController::class);
+    Route::resource('/users', UserController::class);
+    Route::resource('/permissions', PermissionController::class);
 });
