@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ImportStudentController;
 use App\Http\Controllers\Admin\KlassController;
 use App\Http\Controllers\Admin\SchoolYearController;
 use App\Http\Controllers\Admin\SemesterController;
@@ -85,6 +86,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::delete('/schoolyears/{id}', [SchoolYearController::class, 'destroy'])->name('admin.schoolyears.destroy');
 
 
+      
+    // Route::get('/students', [ImportStudentController::class, 'importBlade']);
+    Route::post('/students', [ImportStudentController::class, 'import'])->name('import');
 });
 
 Route::get('/', function () {
