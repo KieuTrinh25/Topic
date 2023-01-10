@@ -45,14 +45,14 @@
             </div>
             <div class="x_content">
                 <br />
-                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" action="{{ route ('admin.students.update', $student->id) }}">
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" action="{{ route ('admin.klasses.update', $klass->id) }}">
                     @method('put')
                     @csrf
                     <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="name" Name value="{{ $student->name }}">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="name"  >
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="name" required="required" class="form-control ">
+                            <input type="text" id="name" required="required" class="form-control " name="name" value="{{ $klass->name }}">
                         </div>
                     </div>
                     
@@ -61,7 +61,7 @@
                         <div class="col-md-6 col-sm-6 ">
                             <select class="form-control" name="faculty_id">
                                 @foreach($facultyList as $fac)
-                                <option @if($fac->id == $student->faculty_id) selected @endif value="{{ $fac->id }}">{{ $fac->name }}</option>
+                                <option @if($fac->id == $klass->faculty_id) selected @endif value="{{ $fac->id }}">{{ $fac->name }}</option>
                                 @endforeach
                             </select>
                         </div>

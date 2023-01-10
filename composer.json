@@ -1,4 +1,6 @@
 {
+   
+    
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
@@ -11,7 +13,9 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "simplesoftwareio/simple-qrcode": "^4.2.0"
         "maatwebsite/excel": "^3.1"
+
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

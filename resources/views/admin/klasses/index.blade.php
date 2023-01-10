@@ -51,9 +51,6 @@
                 <table class="table table-striped jambo_table bulk_action">
                   <thead>
                     <tr class="headings">
-                      <th>
-                        <input type="checkbox" id="check-all" class="flat">
-                      </th>
                       <th class="column-title">id </th>
                       <th class="column-title">code</th>
                       <th class="column-title">name</th>
@@ -74,17 +71,19 @@
                     <td class=" ">{{ $klass->code }}</td>
                     <td class=" ">{{ $klass->name }}</i></td>                  
                     <td class="status">{{ $klass->faculty->code }}</td>
-                    <td class=" last"> <a
-                            href="{{ route('admin.activities.edit', $klass->id) }}"><i
-                                class="mdi mdi-border-color"></i>edit</a>
-                    <td class=" last">
-                        <form method="post"
-                            action="{{ route('admin.activities.destroy', $klass->id) }}">
-                            @method('delete')
-                            @csrf
-                            <button type="submit" class="btn"><i
-                                    class="mdi mdi-delete"></i>delete</button>
-                        </form>
+                    <td>
+                      <form method="get"
+                          action="{{ route('admin.klasses.edit', $klass->id) }}"> 
+                          <button type="submit" class="  btn-outline-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                      </form>
+                    </td>
+                    <td>
+                      <form method="post"
+                        action="{{ route('admin.klasses.destroy', $klass->id) }}">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="  btn-outline-danger"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+                      </form>
                     </td>
                   </tr>
             @endforeach

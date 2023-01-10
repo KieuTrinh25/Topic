@@ -70,6 +70,14 @@
                       <td>{{$student->klass->name}}</td>
                       <td>
                         <form method="get"
+                          action="{{ route('andmin.students.qrCode', $student->id) }}">
+                          @method('qrCode')
+                          @csrf
+                          <button type="submit" class="  btn-outline-danger"><i class="fa fa-pencil-square-o"  aria-hidden="true"></i></button>
+                        </form>
+                      </td>
+                      <td>
+                        <form method="get"
                             action="{{ route('admin.students.edit', $student->id) }}"> 
                             <button type="submit" class="  btn-outline-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                         </form>

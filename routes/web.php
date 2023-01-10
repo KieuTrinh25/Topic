@@ -44,10 +44,14 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/students/{id}/edit', [StudentController::class, 'edit'])->name('admin.students.edit');
     Route::put('/students/{id}', [StudentController::class, 'update'])->name('admin.students.update');
     Route::delete('/students/{id}', [StudentController::class, 'destroy'])->name('admin.students.destroy');
+    Route::get('/students/qr/{id}', [StudentController::class,'qrCode'])->name('andmin.students.qrCode');
+
  
       /**
      * admin klass
      */
+
+   
     Route::get('/klass', [KlassController::class, 'index'])->name('admin.klasses.index');
     Route::get('/klass/create', [KlassController::class,'create'])->name('admin.klasses.create');
     Route::post('/klass', [KlassController::class,'store'])->name('admin.klasses.store');
@@ -74,6 +78,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/schoolyears/{id}/edit', [SchoolYearController::class, 'edit'])->name('admin.schoolyears.edit');
     Route::put('/schoolyears/{id}', [SchoolYearController::class, 'update'])->name('admin.schoolyears.update');
     Route::delete('/schoolyears/{id}', [SchoolYearController::class, 'destroy'])->name('admin.schoolyears.destroy');
+
 
 });
 

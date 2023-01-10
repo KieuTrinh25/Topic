@@ -45,7 +45,9 @@ class KlassController extends Controller
     {
         $klass = resolve(ShowKlassAction::class)->find($id);
         $facultyList = Faculty::All();      
-        return view('admin.klasses.edit', array('Klass' => $klass,'facultyList' => $facultyList), compact('klass'));
+        return view('admin.klasses.edit', array(
+        'klass' => $klass,
+        'facultyList' => $facultyList,));
     }
 
     public function update($id, Request $request)
