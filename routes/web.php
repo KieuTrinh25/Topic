@@ -42,16 +42,19 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/students/{id}/edit', [StudentController::class, 'edit'])->name('admin.students.edit');
     Route::put('/students/{id}', [StudentController::class, 'update'])->name('admin.students.update');
     Route::delete('/students/{id}', [StudentController::class, 'destroy'])->name('admin.students.destroy');
+    Route::get('/students/qr/{id}', [StudentController::class,'qrCode'])->name('andmin.students.qrCode');
+
  
       /**
      * admin klass
      */
-    Route::get('/klass', [KlassController::class, 'index'])->name('admin.klasses.index');
-    Route::get('/klass/create', [KlassController::class,'create'])->name('admin.klasses.create');
-    Route::post('/klass', [KlassController::class,'store'])->name('admin.klasses.store');
-    Route::get('/klass/{id}/edit', [KlassController::class, 'edit'])->name('admin.klasses.edit');
-    Route::put('/klass/{id}', [KlassController::class, 'update'])->name('admin.klasses.update');
-    Route::delete('/klass/{id}', [KlassController::class, 'destroy'])->name('admin.klasses.destroy');
+    Route::get('/klasses', [KlassController::class, 'index'])->name('admin.klasses.index');
+    Route::get('/klasses/create', [KlassController::class,'create'])->name('admin.klasses.create');
+    Route::post('/klasses', [KlassController::class,'store'])->name('admin.klasses.store');
+    Route::get('/klasses/{id}/edit', [KlassController::class, 'edit'])->name('admin.klasses.edit');
+    Route::put('/klasses/{id}', [KlassController::class, 'update'])->name('admin.klasses.update');
+    Route::delete('/klasses/{id}', [KlassController::class, 'destroy'])->name('admin.klasses.destroy');
+
 });
 
 Route::get('/', function () {

@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Faculty;
 use App\Models\Klass;
+use App\Models\Student;
 use App\Services\Student\Actions\CreateStudentAction;
 use App\Services\Student\Actions\DeleteStudentAction;
 use App\Services\Student\Actions\ShowStudentAction;
 use App\Services\Student\Actions\UpdateStudentAction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class StudentController extends Controller
 {
@@ -78,6 +81,11 @@ class StudentController extends Controller
         }
 
         return redirect()->route('admin.students.index');
+    }
+    public function qrCode($id, Request $request)
+    {
+        $qrCode = QrCode::size(500)-> generate($student = resolve(ShowStudentAction::class)->find($id));
+        return view('admin.students.Qrcode',compact('qrCode'));
     }
 
     // public function search(Request $request)
