@@ -10,17 +10,35 @@
         <div class="title_left">
           <h3>Tables <small>Some examples to get you started</small></h3>
         </div>
-
         <div class="title_right">
-          <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+          <div class="col-md-12 form-group top_search">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search for..." >
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
-              </span>
-            </div>
+                <button class="btn btn-outline-secondary" type="submit">Go!</button>
+              </span> 
+            </div>  
           </div>
+          <div class="col-md-10 offset-md-2">
+            <form action="{{ route ('import') }}" method="post" enctype="multipart/form-data" class="col-md-6 form-group">
+              @csrf   
+              <select class="form-control" name="faculty_id">
+                @foreach($facultyList as $fac)
+                <option value="{{ $fac->id }}">{{ $fac->name }}</option>
+                @endforeach
+              </select>
+              <select class="form-control" name="klass_id">
+                @foreach($klassList as $klass)
+                <option value="{{ $klass->id }}">{{ $klass->name }}</option>
+                @endforeach
+              </select> 
+            </form> 
+            <input type="file" name="file_student" id="file_student">
+            <button type="submit" class="btn btn-outline-info">Submit</button> 
+            
         </div>
+        </div>
+        
       </div>
 
       <div class="clearfix"></div>
@@ -49,10 +67,15 @@
               <div class="table-responsive">
                 <table class="table table-striped jambo_table bulk_action">
                   <thead>
-                    <tr class="headings"> 
+                    <tr class="headings">
                       <th class="column-title">Id </th>
                       <th class="column-title">Code</th>
                       <th class="column-title">Name</th>
+                      <th class="column-title">BirthDay</th>
+                      <th class="column-title">Sex</th>
+                      <th class="column-title">Phone</th>
+                      <th class="column-title">Email</th>
+                      <th class="column-title">Address</th>
                       <th class="column-title">Faculty</th>
                       <th class="column-title">Class</th>
                       <th class="column-title">#</th>
@@ -66,6 +89,11 @@
                       <td>{{$student->id}}</td>
                       <td>{{$student->code}}</td>
                       <td>{{$student->name}}</td>
+                      <td>{{$student->day_of_birth}}</td>
+                      <td>{{$student->sex}}</td>
+                      <td>{{$student->phone}}</td>
+                      <td>{{$student->email}}</td>
+                      <td>{{$student->address}}</td>
                       <td>{{$student->faculty->name}}</td>
                       <td>{{$student->klass->name}}</td>
                       <td>
@@ -78,7 +106,7 @@
                       </td>
                       <td>
                         <form method="get"
-                            action="{{ route('admin.students.edit', $student->id) }}"> 
+                            action="{{ route('admin.students.edit', $student->id) }}">  
                             <button type="submit" class="  btn-outline-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                         </form>
                       </td>
@@ -122,7 +150,7 @@
             </div>
             <div class="x_content">
                 <br />
-                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" action="{{route ('admin.students.store') }}">
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" action="">
                 @csrf
                     <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="code" >Code <span class="required">*</span>
@@ -137,7 +165,49 @@
                         <div class="col-md-6 col-sm-6 ">
                             <input type="text" id="name" required="required" class="form-control "  name="name" value="{{ old('name') }}">
                         </div>
-                    </div> 
+                    </div>
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="birthday">BirthDay<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <input id="day_of_birth" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                            <script>
+                                function timeFunctionLong(input) {
+                                    setTimeout(function() {
+                                        input.type = 'text';
+                                    }, 60000);
+                                }
+                            </script>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="sex">Sex <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <input type="text" id="sex" required="required" class="form-control " name="sex" value="{{ old('sex') }}" placeholder="male or female">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="phone">Phone <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <input type="text" id="phone" required="required" class="form-control " name="phone" value="{{ old('phone') }}">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="email">Email <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <input type="text" id="email" Eequired="required" class="form-control " name="email" value="{{ old('email') }}" placeholder="@phuxuan.edu.vn">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="address">Address <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <textarea type="text" id="address" required="required" class="form-control "  name="address" value="{{ old('address') }}"></textarea>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label class="col-form-label col-md-3 col-sm-3 label-align">Faculty</label>
                         <div class="col-md-6 col-sm-6 ">
@@ -171,5 +241,5 @@
             </div>
         </div>
     </div>
-     
+
   @endsection

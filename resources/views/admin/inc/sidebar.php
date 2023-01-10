@@ -40,7 +40,7 @@
                       <li><a href="http://127.0.0.1:8000/admin/klasses">Table Class </a></li>
                       <li><a href="http://127.0.0.1:8000/admin/students">Table Student</a></li>
                       <!-- <li><a href="{{route ('admin.students.index') }}}}">Table Student</a></li> -->
-                      <li><a href="http://127.0.0.1:8000/admin/activities">Table Activities</a></li>
+                      <li><a href="http://127.0.0.1:8000/admin/activities">Table Activity</a></li>
                     </ul>
                   </li>
                

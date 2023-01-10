@@ -56,6 +56,20 @@
                             <input type="text" id="name" required="required" class="form-control "  name="name" value="{{ $student->name }}">
                         </div>
                     </div> 
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="phone">Phone <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <input type="text" id="phone" required="required" class="form-control "  name="phone" value="{{ $student->phone }}">
+                        </div>
+                    </div> 
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="address">Address <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <textarea type="text" id="address" required="required" class="form-control "  name="address" >{{ $student->address}}</textarea>
+                        </div>
+                    </div> 
                     <div class="form-group row">
                         <label class="col-form-label col-md-3 col-sm-3 label-align">Faculty</label>
                         <div class="col-md-6 col-sm-6 ">
@@ -79,7 +93,7 @@
                     <div class="ln_solid"></div>
                     <div class="item form-group">
                         <div class="col-md-6 col-sm-6 offset-md-3">
-                            <button class="btn btn-primary" type="button">Cancel</button>
+                            <button class="btn btn-primary" type="button" >Cancel</button>
                             <button class="btn btn-primary" type="reset">Reset</button>
                             <button type="submit" class="btn btn-success">Submit</button>
                         </div>
