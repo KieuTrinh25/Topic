@@ -24,6 +24,10 @@ class KlassController extends Controller
     }
     public function create()
     {
+        $klass = new Klass();
+        $randomeCode = randomCodeNumber();
+        $klass->code = $klass->input($randomeCode);
+        $klass-> Klass()->save($klass);
         $facultyList = Faculty::All();
         return view('admin.klasses.index', array('$facultyList' => $facultyList,
         ));

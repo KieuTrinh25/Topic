@@ -85,7 +85,7 @@ class StudentController extends Controller
     public function qrCode($id, Request $request)
     {
         $qrCode = QrCode::size(500)-> generate($student = resolve(ShowStudentAction::class)->find($id));
-        return view('admin.students.Qrcode',compact('qrCode'));
+        return view('admin.students.qrcode',compact('qrCode'));
     }
 
     // public function search(Request $request)

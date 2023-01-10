@@ -9,6 +9,7 @@ use App\Services\Activity\Actions\DeleteActivityAction;
 use App\Services\Activity\Actions\ShowActivityAction;
 use App\Services\Activity\Actions\UpdateActivityAction;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ActivityController extends Controller
 {
@@ -65,5 +66,10 @@ class ActivityController extends Controller
             $request->session()->flash('status', 'Delete Fail');
         }
         return redirect()->route('admin.activities.index');
+    }
+    public function qrCode($id, Request $request)
+    {
+        $qrCode = QrCode::size(500)-> generate($activity = resolve(ShowActivityAction::class)->find($id));
+        return view('admin.activities.qrcode',compact('qrCode'));
     }
 }

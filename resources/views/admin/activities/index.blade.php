@@ -58,6 +58,7 @@
                                             <th class="column-title">school_year(code)</th>
                                             <th class="column-title no-link last"><span class="nobr"></span>
                                             <th class="column-title no-link last"><span class="nobr"></span>
+                                            <th class="column-title no-link last"><span class="nobr"></span>
                                             </th>
                                             <th class="bulk-actions" colspan="7">
                                                 <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span
@@ -75,6 +76,14 @@
                                                 <td class="content">{{ $activity->content }}</td>
                                                 <td class="status">{{ $activity->status }}</td>
                                                 <td class="status">{{ $activity->SchoolYear->code }}</td>
+                                                <td>
+                                                    <form method="get"
+                                                      action="{{ route('andmin.activities.qrcode', $activity->id) }}">
+                                                      @method('qrcode')
+                                                      @csrf
+                                                      <button type="submit" class="  btn-outline-danger"><i class="fa fa-pencil-square-o"  aria-hidden="true"></i></button>
+                                                    </form>
+                                                  </td>
                                                 <td class=" last"> <a
                                                         href="{{ route('admin.activities.edit', $activity->id) }}"><i
                                                             class="mdi mdi-border-color"></i>edit</a>

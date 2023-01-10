@@ -120,13 +120,13 @@
                 <br />
                 <form id="demo-form2" method="POST" action="{{ route('admin.klasses.store') }}" data-parsley-validate class="form-horizontal form-label-left">
                   @csrf
-                  <div class="item form-group">
+                  {{-- <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="code" >Code <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
                         <input type="text" id="code" required="required" class="form-control " name="code" value="{{ old('code') }}">
                     </div>
-                </div>
+                </div> --}}
                     <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align"  for="name">Name <span class="required">*</span>
                         </label>

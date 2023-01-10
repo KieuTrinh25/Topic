@@ -34,6 +34,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/activities/{id}/edit', [ActivityController::class, 'edit'])->name('admin.activities.edit');
     Route::put('/activities/{id}', [ActivityController::class, 'update'])->name('admin.activities.update');
     Route::delete('/activities/{id}', [ActivityController::class, 'destroy'])->name('admin.activities.destroy');
+    Route::get('/activities/qr/{id}', [ActivityController::class,'qrCode'])->name('andmin.activities.qrcode');
     
     /**
      * admin Student
