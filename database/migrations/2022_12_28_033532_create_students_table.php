@@ -17,6 +17,11 @@ return new class extends Migration
             $table->id();
             $table->String('code', 128);
             $table->String('name',128);
+            $table->date('day_of_birth',128);
+            $table->String('sex',128);
+            $table->String('phone',128);
+            $table->String('email',128);
+            $table->String('address',128);
             $table->unsignedBigInteger('faculty_id');
             $table->foreign('faculty_id')->references('id')->on('faculties');
             $table->unsignedBigInteger('klass_id');
