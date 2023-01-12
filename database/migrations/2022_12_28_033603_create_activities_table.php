@@ -20,6 +20,8 @@ return new class extends Migration
             $table->String('slug', 128)->nullable();
             $table->String('content', 1028);
             $table->String('status')->default('pending');
+            $table->date('start_time');
+            $table->date('end_time');
             $table->unsignedBigInteger('school_year_id');
             $table->foreign('school_year_id')->references('id')->on('school_years');
             $table->timestamps();

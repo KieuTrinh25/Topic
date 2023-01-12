@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ActivityController;
+use App\Http\Controllers\Admin\CalendarController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ImportStudentController;
 use App\Http\Controllers\Admin\FacultyController;
@@ -109,10 +110,33 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function() {
     
     Route::get('/permissions/{id}/edit', [SchoolYearController::class, 'edit'])->name('admin.schoolyears.edit');
     Route::put('/permissions/{id}', [SchoolYearController::class, 'update'])->name('admin.schoolyears.update');
+    /**
+     * admin calendar
+     */
+    Route::get('/calendars', [CalendarController::class, 'index'])->name('admin.calendars.index');
+    Route::post('calendarsAjax', [CalendarController::class, 'ajax']);
+    
+
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    
+    $event1 = array(
+        'title' => 'Conference',
+        'start'  => '2020-09-11',
+        'end'=> '2020-09-13'
+    );
+    $event2 = array(
+        'title' => 'Conference',
+          'start'  => '2020-09-11',
+          'end'=> '2020-09-13'
+    );
+    $events = array(
+        $event1, 
+        $event2 
+    );
+
+    echo json_encode($events);
 });
 
 Auth::routes();
