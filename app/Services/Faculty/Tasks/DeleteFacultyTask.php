@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Faculty\Task;
+namespace App\Services\Faculty\Tasks;
 
 use App\Http\Repositories\Faculty\FacultyRepository;
 use App\Services\Task;

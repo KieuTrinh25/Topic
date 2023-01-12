@@ -16,15 +16,7 @@ class ShowFacultyTask extends Task{
         return $this->repository->list();
     }
 
-    public function getSingleFaculty($id){
+    public function find($id){
         return $this->repository->find($id);
-    }
-
-    public function getFacultyBySlug($slug){
-        return  $this->repository->getFacultyBySlug($slug);
-    }
-
-    public function getFacultyByName($name){
-        return  $this->repository->findByField("name", "like", "%$name%");
     }
 }

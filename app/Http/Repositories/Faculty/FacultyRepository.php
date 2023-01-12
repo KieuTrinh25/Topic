@@ -13,9 +13,5 @@ class FacultyRepository extends BaseRepository implements FacultyRepositoryInter
     public function list(){
         return $this->getAll();
     }
-
-    public function getFacultyBySlug($slug)
-    {
-        return $this->model->where('slug', $slug)->first();
-    }
+    
 }

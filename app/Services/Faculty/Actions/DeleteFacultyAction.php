@@ -2,9 +2,9 @@
 namespace App\Services\Faculty\Actions;
 
 use App\Services\Action;
-use App\Services\Faculty\Task\DeleteFacultyTask;
+use App\Services\Faculty\Tasks\DeleteFacultyTask;
 
-class DeteleFacultyAction extends Action{
+class DeleteFacultyAction extends Action{
     public function __construct()
     {
         

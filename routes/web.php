@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ImportStudentController;
+use App\Http\Controllers\Admin\FacultyController;
 use App\Http\Controllers\Admin\KlassController;
 use App\Http\Controllers\Admin\SchoolYearController;
 use App\Http\Controllers\Admin\SemesterController;
@@ -89,6 +90,16 @@ Route::group(['prefix' => 'admin'], function () {
       
     // Route::get('/students', [ImportStudentController::class, 'importBlade']);
     Route::post('/students', [ImportStudentController::class, 'import'])->name('import');
+    /*
+     * admin faculty
+     */
+    Route::get('/faculties', [FacultyController::class, 'index'])->name('admin.faculties.index');
+    Route::get('/faculties/create', [FacultyController::class, 'create'])->name('admin.faculties.create');
+    Route::post('/faculties', [FacultyController::class, 'store'])->name('admin.faculties.store');
+
+    Route::get('/faculties/{id}/edit', [FacultyController::class, 'edit'])->name('admin.faculties.edit');
+    Route::put('/faculties/{id}', [FacultyController::class, 'update'])->name('admin.faculties.update');
+    Route::delete('/faculties/{id}', [FacultyController::class, 'destroy'])->name('admin.faculties.destroy');
 });
 
 Route::get('/', function () {
