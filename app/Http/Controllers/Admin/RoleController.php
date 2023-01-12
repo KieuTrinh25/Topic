@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 
 use Illuminate\Http\Request;
@@ -25,13 +25,13 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         $roles = Role::orderBy('id', 'DESC')->paginate(5);
-        return view('roles.index', compact('roles'));
+        return view('admin.roles.index', compact('roles'));
     }
 
     public function create()
     {
         $permission = Permission::get();
-        return view('roles.create', compact('permission'));
+        return view('admin.roles.create', compact('permission'));
     }
 
     public function store(Request $request)
@@ -50,7 +50,7 @@ class RoleController extends Controller
 
     public function show($id)
     {
-        return redirect()->route('roles.index');
+        return redirect()->route('admin.roles.index');
     }
 
     public function edit($id)
@@ -61,7 +61,7 @@ class RoleController extends Controller
                 'message' => "You have no permission for edit this role",
                 'alert-type' => 'error'
             );
-            return redirect()->route('roles.index')
+            return redirect()->route('admin.roles.index')
                 ->with($notification);
         }
 
@@ -70,7 +70,7 @@ class RoleController extends Controller
             ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
             ->all();
 
-        return view('roles.edit', compact('role', 'permission', 'rolePermissions'));
+        return view('admin.roles.edit', compact('role', 'permission', 'rolePermissions'));
     }
 
     public function update(Request $request, $id)
@@ -89,7 +89,7 @@ class RoleController extends Controller
 
         $role->syncPermissions($request->input('permission'));
 
-        return redirect()->route('roles.index')
+        return redirect()->route('admin.roles.index')
             ->with('success', 'Role updated successfully');
     }
 
@@ -102,7 +102,7 @@ class RoleController extends Controller
                 'message' => 'You have no permission for delete this role',
                 'alert-type' => 'error'
             );
-            return redirect()->route('roles.index')
+            return redirect()->route('admin.roles.index')
                 ->with($notification);
         }
         if ($role->name == "Super-Admin") {
@@ -110,7 +110,7 @@ class RoleController extends Controller
                 'message' => 'You have no permission for delete Super-Admin role',
                 'alert-type' => 'error'
             );
-            return redirect()->route('roles.index')
+            return redirect()->route('admin.roles.index')
                 ->with($notification);
         }
         $role->delete();
@@ -119,7 +119,7 @@ class RoleController extends Controller
             'message' => 'The role deleted successfully',
             'alert-type' => 'success'
         );
-        return redirect()->route('roles.index')
+        return redirect()->route('admin.roles.index')
             ->with($notification);
     }
 }

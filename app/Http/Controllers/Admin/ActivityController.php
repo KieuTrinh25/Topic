@@ -13,6 +13,14 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ActivityController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('permission:activity-list|activity-create|activity-edit|activity-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:activity-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:activity-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:activity-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $activityList = resolve(ShowActivityAction::class)->run();
@@ -20,12 +28,12 @@ class ActivityController extends Controller
         return view('admin.activities.index', array(
             'activityList' => $activityList,
             'schoolYearList' => $schoolYearList,
-        ));
+            ),  compact('activityList'));
     }
     public function create()
     {
         $schoolYearList = SchoolYear::All();
-        return view('admin.activities.index', array('schoolYearList' => $schoolYearList));
+        return view('admin.activities.index',array('schoolYearList' => $schoolYearList));
     }
 
     public function store(Request $request)

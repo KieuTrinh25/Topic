@@ -10,7 +10,6 @@
                 <div class="title_left">
                     <h3>Tables <small>Some examples to get you started</small></h3>
                 </div>
-
                 <div class="title_right">
                     <div class="col-md-5 col-sm-5   form-group pull-right top_search">
                         <div class="input-group">
@@ -76,14 +75,6 @@
                                                 <td class="content">{{ $activity->content }}</td>
                                                 <td class="status">{{ $activity->status }}</td>
                                                 <td class="status">{{ $activity->SchoolYear->code }}</td>
-                                                <td>
-                                                    <form method="get"
-                                                      action="{{ route('andmin.activities.qrcode', $activity->id) }}">
-                                                      @method('qrcode')
-                                                      @csrf
-                                                      <button type="submit" class="  btn-outline-danger"><i class="fa fa-pencil-square-o"  aria-hidden="true"></i></button>
-                                                    </form>
-                                                  </td>
                                                 <td class=" last"> <a
                                                         href="{{ route('admin.activities.edit', $activity->id) }}"><i
                                                             class="mdi mdi-border-color"></i>edit</a>
@@ -106,82 +97,91 @@
             </div>
         </div>
         <div class="col-md-12 col-sm-12 ">
-        <div class="x_panel">
-            <div class="x_title">
-                <h2>Form Activities</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a class="dropdown-item" href="#">Settings 1</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Settings 2</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-                <br />
-                <form id="demo-form2" method="POST" action="{{ route('admin.activities.store') }}" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
-                    @csrf
-                    <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="code" >code <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="code" required="required" class="form-control " name="code" value="{{ old('code') }}">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Form Activities</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a class="dropdown-item" href="#">Settings 1</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form id="demo-form2" method="POST" action="{{ route('admin.activities.store') }}"
+                        enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
+                        @csrf
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="code">code <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="code" required="required" class="form-control "
+                                    name="code" value="{{ old('code') }}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="name" required="required" class="form-control "  name="name" value="{{ old('name') }}">
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="name" required="required" class="form-control "
+                                    name="name" value="{{ old('name') }}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="content"  >content <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="content" required="required" class="form-control " name="content" value="{{ old('content') }}">
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="content">content <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="content" required="required" class="form-control "
+                                    name="content" value="{{ old('content') }}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="status" >status<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="status" required="required" class="form-control " name="status" value="{{ old('status') }}">
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="status">status<span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="status" required="required" class="form-control "
+                                    name="status" value="{{ old('status') }}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">school_year_id</label>
-                        <div class="col-md-6 col-sm-6 ">
-                            <select class="form-control" name="school_year_id">
-                                @foreach($schoolYearList as $school)
-                                <option value="{{ $school->id }}">{{ $school->code }}</option>
-                                @endforeach
-                            </select>
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">school_year_id</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <select class="form-control" name="school_year_id">
+                                    @foreach ($schoolYearList as $school)
+                                        <option value="{{ $school->id }}">{{ $school->code }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="ln_solid"></div>
-                    <div class="item form-group">
-                        <div class="col-md-6 col-sm-6 offset-md-3">
-                            <button class="btn btn-primary" type="button">Cancel</button>
-                            <button class="btn btn-primary" type="reset">Reset</button>
-                            <button type="submit" class="btn btn-success">Submit</button>
+                        <div class="ln_solid"></div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-6 offset-md-3">
+                                <button class="btn btn-primary" type="button">Cancel</button>
+                                <button class="btn btn-primary" type="reset">Reset</button>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
                         </div>
-                    </div>
 
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-      </div>
     </div>
     <!-- /page content -->
 @endsection

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -11,13 +11,13 @@ use PhpParser\Node\Stmt\TryCatch;
 
 
 use DB;
+use PhpOffice\PhpSpreadsheet\Reader\Xls\RC4;
 
 class PermissionController extends Controller
 {
 
     function __construct()
     {
-
         $this->middleware('role:Super-Admin');
     }
 
@@ -28,13 +28,14 @@ class PermissionController extends Controller
      */
     public function index(Request $request)
     {
-        $permissions = Permission::all();
-        if ($request->ajax()) {
-            return response()->json([
-                'permissions' => $permissions,
-            ]);
-        }
-        return view('permissions.index');
+        $permissions = Permission::orderBy('id', 'ASC')->paginate(7);
+        // if ($request->ajax()) {
+        //     return response()->json([
+        //         'permissions' => $permissions,
+        //     ]);
+        // }
+        return view('admin.permissions.index', array(
+            'permissions' => $permissions,), compact('permissions'));
     }
 
     /**
@@ -44,7 +45,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return redirect()->route('permissions.index');
+        return redirect()->route('admin.permissions.index');
     }
 
     /**
@@ -84,29 +85,43 @@ class PermissionController extends Controller
      */
     public function show($id)
     {
+        return redirect()->route('admin.permissions.index');
+    }
+
+    public function edit($id){
+        $permissions = Permission::find($id);
+        return view('admin.permissions.edit', array(
+            '$permissions' => $permissions
+        ), compact('permissions'));
+    }
+
+    public function update(Request $request, $id){
+        $permissions = Permission::find($id);
+        $permissions->update(
+            $request->all()
+        );
         return redirect()->route('permissions.index');
     }
+    // public function edit($id)
+    // {
+    //     return redirect()->route('admin.permissions.index');
+    // }
 
-    public function edit($id)
-    {
-        return redirect()->route('permissions.index');
-    }
+    // public function update(Request $request, $id)
+    // {
+    //     $this->validate($request, [
+    //         'name' => [
+    //             'required',
+    //             Rule::unique('permissions', 'name')->ignore($id)
+    //         ]
+    //     ]);
+    //     $permission = Permission::find($id);
+    //     $permission->name = $request->name;
+    //     $permission->save();
 
-    public function update(Request $request, $id)
-    {
-        $this->validate($request, [
-            'name' => [
-                'required',
-                Rule::unique('permissions', 'name')->ignore($id)
-            ]
-        ]);
-        $permission = Permission::find($id);
-        $permission->name = $request->name;
-        $permission->save();
-
-        return redirect()->route('permissions.index')
-            ->with('success', 'Permission updated successfully');
-    }
+    //     return redirect()->route('permissions.index')
+    //         ->with('success', 'Permission updated successfully');
+    // }
 
     public function destroy($id)
     {

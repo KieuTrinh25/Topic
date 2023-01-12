@@ -13,6 +13,13 @@ use Illuminate\Http\Request;
 
 class KlassController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:klass-list|klass-create|klass-edit|klass-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:klass-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:klass-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:klass-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $KlassList = resolve(ShowKlassAction::class)->run();
