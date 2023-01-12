@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class Activity extends Model
 {
     use HasFactory;
-    protected $fillable = ['code','name','slug', 'content', 'status', 'school_year_id'];
+    protected $fillable = ['code','name','slug', 'content', 'status', 'start_time','end_time', 'school_year_id'];
     
     public function students(){
         return $this->belongsToMany(Student::class);
