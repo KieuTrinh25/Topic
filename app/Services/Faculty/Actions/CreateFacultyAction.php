@@ -2,12 +2,12 @@
 namespace App\Services\Faculty\Actions;
 
 use App\Services\Action;
-use App\Services\Faculty\Task\CreateFacultyTask;
+use App\Services\Faculty\Tasks\CreateFacultyTask;
 
-class CreateFacultyAction extends Action{
+class CreateFacultyAction extends Action
+{
     public function __construct()
     {
-        
     }
 
     public function create(array $attributes){

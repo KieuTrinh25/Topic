@@ -1,10 +1,12 @@
 <?php
-namespace App\Services\Faculty\Task;
+
+namespace App\Services\Faculty\Tasks;
 
 use App\Http\Repositories\Faculty\FacultyRepository;
 use App\Services\Task;
 
-class CreateFacultyTask extends Task{
+class CreateFacultyTask extends Task
+{
     private $repository;
 
     public function __construct(FacultyRepository $repository)
@@ -12,7 +14,8 @@ class CreateFacultyTask extends Task{
         $this->repository = $repository;
     }
 
-    public function create(array $attributes){
+    public function create(array $attributes)
+    {
         return $this->repository->create($attributes);
     }
 }

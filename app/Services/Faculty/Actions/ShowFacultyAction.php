@@ -14,15 +14,7 @@ class ShowFacultyAction extends Action{
         return resolve(ShowFacultyTask::class)->run();
     }
 
-    public function getSingleFaculty($id){
-        return resolve(ShowFacultyTask::class)->getSingleFaculty($id);
-    }
-
-    public function getFacultyBySlug($slug){
-        return resolve(ShowFacultyTask::class)->getFacultyBySlug($slug);
-    }
-
-    public function getFacultyByName($name){
-        return resolve(ShowFacultyTask::class)->getFacultyByName($name);
+    public function find($id){
+        return resolve(ShowFacultyTask::class)->find($id);
     }
 }
