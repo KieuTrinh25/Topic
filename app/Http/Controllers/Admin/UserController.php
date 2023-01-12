@@ -61,7 +61,7 @@ class UserController extends Controller
             'message' => 'User created successfully',
             'alert-type' => 'success'
         );
-        return redirect()->route('admin.users.create')
+        return redirect()->route('users.index')
             ->with($notification);
     }
 

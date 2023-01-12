@@ -11,8 +11,8 @@ use App\Http\Controllers\Admin\StudentController;
 use App\Models\Klass;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\RoleController;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\RoleController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
  */
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin','middleware' => ['auth']], function() {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
@@ -85,6 +85,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/schoolyears/{id}/edit', [SchoolYearController::class, 'edit'])->name('admin.schoolyears.edit');
     Route::put('/schoolyears/{id}', [SchoolYearController::class, 'update'])->name('admin.schoolyears.update');
     Route::delete('/schoolyears/{id}', [SchoolYearController::class, 'destroy'])->name('admin.schoolyears.destroy');
+   
 
 
       
@@ -100,6 +101,14 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/faculties/{id}/edit', [FacultyController::class, 'edit'])->name('admin.faculties.edit');
     Route::put('/faculties/{id}', [FacultyController::class, 'update'])->name('admin.faculties.update');
     Route::delete('/faculties/{id}', [FacultyController::class, 'destroy'])->name('admin.faculties.destroy');
+    // Route::resource('/activities', ActivityController::class);
+
+    Route::resource('/roles', RoleController::class);
+    Route::resource('/users', UserController::class);
+    Route::resource('/permissions', PermissionController::class);
+    
+    Route::get('/permissions/{id}/edit', [SchoolYearController::class, 'edit'])->name('admin.schoolyears.edit');
+    Route::put('/permissions/{id}', [SchoolYearController::class, 'update'])->name('admin.schoolyears.update');
 });
 
 Route::get('/', function () {
@@ -110,9 +119,3 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'admin','middleware' => ['auth']], function() {
-    Route::resource('/roles', RoleController::class);
-    Route::resource('/users', UserController::class);
-    Route::resource('/users', UserController::class);
-    Route::resource('/permissions', PermissionController::class);
-});

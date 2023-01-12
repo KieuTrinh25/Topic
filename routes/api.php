@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\KlassController;
+// use App\Http\Controllers\Api\KlassController;
 use App\Http\Controllers\Api\FacultyController;
 use App\Http\Controllers\Api\SchoolYearController;
 use App\Http\Controllers\Api\ActivityController;
@@ -35,12 +35,12 @@ Route::get('/faculties/{id}', [FacultyController::class, 'show']);
 Route::post('/faculties', [FacultyController::class, 'store']);
 Route::put('/faculties/{id}', [FacultyController::class, 'update']);
 Route::delete('/faculties/{id}', [FacultyController::class, 'destroy']);
-// Lớp
-Route::get('/klasses', [KlassController::class, 'index']);
-Route::get('/klasses/{id}', [KlassController::class, 'show']);
-Route::post('/klasses', [KlassController::class, 'store']);
-Route::put('/klasses/{id}', [KlassController::class, 'update']);
-Route::delete('/klasses/{id}', [KlassController::class, 'destroy']);
+// // Lớp
+// Route::get('/klasses', [KlassController::class, 'index']);
+// Route::get('/klasses/{id}', [KlassController::class, 'show']);
+// Route::post('/klasses', [KlassController::class, 'store']);
+// Route::put('/klasses/{id}', [KlassController::class, 'update']);
+// Route::delete('/klasses/{id}', [KlassController::class, 'destroy']);
 
 
 Route::Get('/activity', [ActivityController::class, 'index']);
